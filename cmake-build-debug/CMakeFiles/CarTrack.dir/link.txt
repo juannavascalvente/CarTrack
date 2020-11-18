@@ -1,0 +1,1 @@
+/usr/bin/c++  -g   CMakeFiles/CarTrack.dir/src/main.cpp.o  -o CarTrack 
