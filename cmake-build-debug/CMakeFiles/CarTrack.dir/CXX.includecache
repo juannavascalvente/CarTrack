@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/juannc/Projects/Gps/CarTrack/src/main.cpp
+iostream
+-
+cstdio
+-
+cstring
+-
+cerrno
+-
+wiringPi.h
+-
+wiringSerial.h
+-
+
