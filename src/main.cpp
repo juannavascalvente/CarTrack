@@ -3,13 +3,14 @@
 #include <cstring>
 #include <cerrno>
 
-/*
+#ifdef __arm__
 #include <wiringPi.h>
 #include <wiringSerial.h>
-*/
+#endif
+
 int main() {
     std::cout << "Starting GPS!" << std::endl;
-/*
+#ifdef __arm__
     int serial_port;
     char dat,buff[100],GGA_code[3];
     bool isItGgaString=false;
@@ -71,6 +72,7 @@ int main() {
             is_GGA_received_completely = false;
         }
     }
-*/
+#endif
+
     return 0;
 }
