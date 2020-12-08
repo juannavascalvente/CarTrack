@@ -39,6 +39,7 @@ int main() {
         {
             // Receive character serially
             dat = serialGetchar(serial_port);
+            printf("%c ", dat);
             if (dat == '$')
             {
                 isItGgaString = false;
