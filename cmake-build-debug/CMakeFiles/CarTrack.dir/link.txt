@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/CarTrack.dir/src/main.cpp.o  -o CarTrack 
+/usr/bin/c++  -g   CMakeFiles/CarTrack.dir/src/main.cpp.o CMakeFiles/CarTrack.dir/src/GpsCoordinateBuilder.cpp.o CMakeFiles/CarTrack.dir/src/GpsCoordinate.cpp.o  -o CarTrack 

@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/home/juannc/work/CarTrack/code/CarTrack/inc/GpsCoordinate.h
+string
+-
+
+/home/juannc/work/CarTrack/code/CarTrack/inc/GpsCoordinateBuilder.h
+string
+-
+GpsCoordinate.h
+/home/juannc/work/CarTrack/code/CarTrack/inc/GpsCoordinate.h
+
+/home/juannc/work/CarTrack/code/CarTrack/src/GpsCoordinateBuilder.cpp
+../inc/GpsCoordinateBuilder.h
+/home/juannc/work/CarTrack/code/CarTrack/inc/GpsCoordinateBuilder.h
+
 /home/juannc/work/CarTrack/code/CarTrack/src/main.cpp
 iostream
 -
@@ -15,6 +29,10 @@ cstring
 -
 cerrno
 -
+../inc/GpsCoordinateBuilder.h
+/home/juannc/work/CarTrack/code/CarTrack/inc/GpsCoordinateBuilder.h
+../inc/GpsCoordinate.h
+/home/juannc/work/CarTrack/code/CarTrack/inc/GpsCoordinate.h
 wiringPi.h
 -
 wiringSerial.h

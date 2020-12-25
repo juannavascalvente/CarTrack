@@ -4,6 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/juannc/work/CarTrack/code/CarTrack/src/GpsCoordinate.cpp" "/home/juannc/work/CarTrack/code/CarTrack/cmake-build-debug/CMakeFiles/CarTrack.dir/src/GpsCoordinate.cpp.o"
+  "/home/juannc/work/CarTrack/code/CarTrack/src/GpsCoordinateBuilder.cpp" "/home/juannc/work/CarTrack/code/CarTrack/cmake-build-debug/CMakeFiles/CarTrack.dir/src/GpsCoordinateBuilder.cpp.o"
   "/home/juannc/work/CarTrack/code/CarTrack/src/main.cpp" "/home/juannc/work/CarTrack/code/CarTrack/cmake-build-debug/CMakeFiles/CarTrack.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

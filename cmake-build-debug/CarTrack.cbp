@@ -82,6 +82,18 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/juannc/work/CarTrack/code/CarTrack/inc/GpsCoordinate.h">
+			<Option target="CarTrack"/>
+		</Unit>
+		<Unit filename="/home/juannc/work/CarTrack/code/CarTrack/inc/GpsCoordinateBuilder.h">
+			<Option target="CarTrack"/>
+		</Unit>
+		<Unit filename="/home/juannc/work/CarTrack/code/CarTrack/src/GpsCoordinate.cpp">
+			<Option target="CarTrack"/>
+		</Unit>
+		<Unit filename="/home/juannc/work/CarTrack/code/CarTrack/src/GpsCoordinateBuilder.cpp">
+			<Option target="CarTrack"/>
+		</Unit>
 		<Unit filename="/home/juannc/work/CarTrack/code/CarTrack/src/main.cpp">
 			<Option target="CarTrack"/>
 		</Unit>

@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/CarTrack.dir/src/GpsCoordinate.cpp.o"
+  "CMakeFiles/CarTrack.dir/src/GpsCoordinateBuilder.cpp.o"
   "CMakeFiles/CarTrack.dir/src/main.cpp.o"
   "CarTrack"
   "CarTrack.pdb"

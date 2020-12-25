@@ -2,6 +2,8 @@
 #include <cstdio>
 #include <cstring>
 #include <cerrno>
+#include "../inc/GpsCoordinateBuilder.h"
+#include "../inc/GpsCoordinate.h"
 
 #ifdef __arm__
 #include <wiringPi.h>
@@ -10,6 +12,10 @@
 
 int main() {
     std::cout << "Starting GPS!" << std::endl;
+
+    GpsCoordinate coordinates;
+    GpsCoordinateBuilder::fromGPGGAtoGPS("4024.61529", "00343.69067", coordinates);
+    coordinates.print();
 #ifdef __arm__
     int serial_port;
     char dat,buff[100],GGA_code[3];

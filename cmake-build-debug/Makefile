@@ -143,6 +143,60 @@ CarTrack/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarTrack.dir/build.make CMakeFiles/CarTrack.dir/build
 .PHONY : CarTrack/fast
 
+src/GpsCoordinate.o: src/GpsCoordinate.cpp.o
+
+.PHONY : src/GpsCoordinate.o
+
+# target to build an object file
+src/GpsCoordinate.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarTrack.dir/build.make CMakeFiles/CarTrack.dir/src/GpsCoordinate.cpp.o
+.PHONY : src/GpsCoordinate.cpp.o
+
+src/GpsCoordinate.i: src/GpsCoordinate.cpp.i
+
+.PHONY : src/GpsCoordinate.i
+
+# target to preprocess a source file
+src/GpsCoordinate.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarTrack.dir/build.make CMakeFiles/CarTrack.dir/src/GpsCoordinate.cpp.i
+.PHONY : src/GpsCoordinate.cpp.i
+
+src/GpsCoordinate.s: src/GpsCoordinate.cpp.s
+
+.PHONY : src/GpsCoordinate.s
+
+# target to generate assembly for a file
+src/GpsCoordinate.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarTrack.dir/build.make CMakeFiles/CarTrack.dir/src/GpsCoordinate.cpp.s
+.PHONY : src/GpsCoordinate.cpp.s
+
+src/GpsCoordinateBuilder.o: src/GpsCoordinateBuilder.cpp.o
+
+.PHONY : src/GpsCoordinateBuilder.o
+
+# target to build an object file
+src/GpsCoordinateBuilder.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarTrack.dir/build.make CMakeFiles/CarTrack.dir/src/GpsCoordinateBuilder.cpp.o
+.PHONY : src/GpsCoordinateBuilder.cpp.o
+
+src/GpsCoordinateBuilder.i: src/GpsCoordinateBuilder.cpp.i
+
+.PHONY : src/GpsCoordinateBuilder.i
+
+# target to preprocess a source file
+src/GpsCoordinateBuilder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarTrack.dir/build.make CMakeFiles/CarTrack.dir/src/GpsCoordinateBuilder.cpp.i
+.PHONY : src/GpsCoordinateBuilder.cpp.i
+
+src/GpsCoordinateBuilder.s: src/GpsCoordinateBuilder.cpp.s
+
+.PHONY : src/GpsCoordinateBuilder.s
+
+# target to generate assembly for a file
+src/GpsCoordinateBuilder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/CarTrack.dir/build.make CMakeFiles/CarTrack.dir/src/GpsCoordinateBuilder.cpp.s
+.PHONY : src/GpsCoordinateBuilder.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -179,6 +233,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... CarTrack"
+	@echo "... src/GpsCoordinate.o"
+	@echo "... src/GpsCoordinate.i"
+	@echo "... src/GpsCoordinate.s"
+	@echo "... src/GpsCoordinateBuilder.o"
+	@echo "... src/GpsCoordinateBuilder.i"
+	@echo "... src/GpsCoordinateBuilder.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
