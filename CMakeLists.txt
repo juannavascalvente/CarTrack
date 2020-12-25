@@ -3,4 +3,4 @@ project(CarTrack)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(CarTrack src/main.cpp src/GpsCoordinateBuilder.cpp inc/GpsCoordinateBuilder.h src/GpsCoordinate.cpp inc/GpsCoordinate.h)
+add_executable(CarTrack src/main.cpp src/GpsCoordinateBuilder.cpp inc/GpsCoordinateBuilder.h src/GpsCoordinates.cpp inc/GpsCoordinates.h)

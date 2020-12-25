@@ -2,29 +2,29 @@
                                 Includes
 ******************************************************************************/
 #include <iostream>
-#include "../inc/GpsCoordinate.h"
+#include "../inc/GpsCoordinates.h"
 
 
 /******************************************************************************
                             Function definitions
 ******************************************************************************/
-void GpsCoordinate::print() const {
+void GpsCoordinates::print() const {
     cout << "Latitute: " << this->getLat() << " N" << endl;
     cout << "Longitude: " << this->getLon() << " W" << endl;
 }
 
-void GpsCoordinate::setLat(const string &strLatIn) {
-    GpsCoordinate::strLat = strLatIn;
+void GpsCoordinates::setLat(const string &strLatIn) {
+    GpsCoordinates::strLat = strLatIn;
 }
 
-void GpsCoordinate::setLon(const string &strLonIn) {
-    GpsCoordinate::strLon = strLonIn;
+void GpsCoordinates::setLon(const string &strLonIn) {
+    GpsCoordinates::strLon = strLonIn;
 }
 
-const string &GpsCoordinate::getLat() const {
+const string &GpsCoordinates::getLat() const {
     return strLat;
 }
 
-const string &GpsCoordinate::getLon() const {
+const string &GpsCoordinates::getLon() const {
     return strLon;
 }

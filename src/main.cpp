@@ -3,7 +3,7 @@
 #include <cstring>
 #include <cerrno>
 #include "../inc/GpsCoordinateBuilder.h"
-#include "../inc/GpsCoordinate.h"
+#include "../inc/GpsCoordinates.h"
 
 #ifdef __arm__
 #include <wiringPi.h>
@@ -13,7 +13,7 @@
 int main() {
     std::cout << "Starting GPS!" << std::endl;
 
-    GpsCoordinate coordinates;
+    GpsCoordinates coordinates;
     GpsCoordinateBuilder::fromGPGGAtoGPS("4024.61529", "00343.69067", coordinates);
     coordinates.print();
 #ifdef __arm__

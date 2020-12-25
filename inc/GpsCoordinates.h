@@ -11,7 +11,7 @@ using namespace std;
 /******************************************************************************
                             Class declaration
 ******************************************************************************/
-class GpsCoordinate {
+class GpsCoordinates {
     string strLat;
     string strLon;
 public:

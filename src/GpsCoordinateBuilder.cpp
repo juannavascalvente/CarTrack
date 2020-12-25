@@ -7,7 +7,7 @@
 /******************************************************************************
                             Function definitions
 ******************************************************************************/
-void GpsCoordinateBuilder::fromGPGGAtoGPS(const std::string& strLat, const std::string& strLong, GpsCoordinate &coord)
+void GpsCoordinateBuilder::fromGPGGAtoGPS(const std::string& strLat, const std::string& strLong, GpsCoordinates &coord)
 {
     // Get latitude and longitude
     string strDDLat = GGAtoDecimalDegrees(strLat, uiZero, uiTwo);
