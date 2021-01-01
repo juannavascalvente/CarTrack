@@ -13,10 +13,17 @@
 
 int main() {
     std::cout << "Starting GPS!" << std::endl;
+    string strFileName1 = "test1.txt";
+    string strFileName2 = "test2.txt";
+    vector<GpsCoordinates> vector;
 
     GpsCoordinates coordinate;
     GpsCoordinateBuilder::fromGPGGAtoGPS("4024.61529", "00343.69067", coordinate);
+    vector.push_back(coordinate);
+
     GpsCoordinatesIO::print(coordinate);
+    GpsCoordinatesIO::write(coordinate, strFileName1);
+    GpsCoordinatesIO::write(coordinate, strFileName2);
 #ifdef __arm__
     int serial_port;
     char dat,buff[100],GGA_code[3];
