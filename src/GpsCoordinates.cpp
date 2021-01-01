@@ -1,18 +1,12 @@
 /******************************************************************************
                                 Includes
 ******************************************************************************/
-#include <iostream>
 #include "../inc/GpsCoordinates.h"
 
 
 /******************************************************************************
                             Function definitions
 ******************************************************************************/
-void GpsCoordinates::print() const {
-    cout << "Latitute: " << this->getLat() << " N" << endl;
-    cout << "Longitude: " << this->getLon() << " W" << endl;
-}
-
 void GpsCoordinates::setLat(const string &strLatIn) {
     GpsCoordinates::strLat = strLatIn;
 }

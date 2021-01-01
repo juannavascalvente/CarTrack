@@ -16,11 +16,6 @@ class GpsCoordinates {
     string strLon;
 public:
     /**
-     * @brief   Prints latitude and longitude coordinates
-     */
-    void print() const;
-
-    /**
      * @brief   Sets latitude coordinate
      * @param   strLatIn  (IN)    New latitude
      */

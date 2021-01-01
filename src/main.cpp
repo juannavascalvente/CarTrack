@@ -3,6 +3,7 @@
 #include <cstring>
 #include <cerrno>
 #include "../inc/GpsCoordinateBuilder.h"
+#include "../inc/GpsCoordinatesIO.h"
 #include "../inc/GpsCoordinates.h"
 
 #ifdef __arm__
@@ -13,9 +14,9 @@
 int main() {
     std::cout << "Starting GPS!" << std::endl;
 
-    GpsCoordinates coordinates;
-    GpsCoordinateBuilder::fromGPGGAtoGPS("4024.61529", "00343.69067", coordinates);
-    coordinates.print();
+    GpsCoordinates coordinate;
+    GpsCoordinateBuilder::fromGPGGAtoGPS("4024.61529", "00343.69067", coordinate);
+    GpsCoordinatesIO::print(coordinate);
 #ifdef __arm__
     int serial_port;
     char dat,buff[100],GGA_code[3];
