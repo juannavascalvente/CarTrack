@@ -35,6 +35,8 @@ bool Receiver::is_GGA_received_completely;
 ******************************************************************************/
 bool Receiver::Init()
 {
+    cout << "Receiver Init..." << endl;
+
     serial_port = 0;
     dat = 0;
     memset(buff, 0, sizeof(buff));
@@ -66,6 +68,8 @@ bool Receiver::Init()
         status.setInit();
     }
 
+    status.print();
+    cout << "Receiver Init...end" << endl;
     return status.isInit();
 }
 
@@ -76,6 +80,10 @@ bool Receiver::IsRunning()
 
 bool Receiver::Process()
 {
+    cout << "Receiver Process..." << endl;
+
+    status.setRunning();
+
     while (Receiver::IsRunning())
     {
 #ifdef __arm__
@@ -119,6 +127,8 @@ bool Receiver::Process()
         }
 #endif
     }
+
+    cout << "Receiver Process...end" << endl;
 
     return Receiver::IsRunning();
 }

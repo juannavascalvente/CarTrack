@@ -22,10 +22,10 @@ int main() {
     Receiver::Init();
 
     // Infinite loop for receiver processing while its status is RUNNING.
-    while (Receiver::IsRunning())
+    do
     {
         Receiver::Process();
-    }
+    } while (Receiver::IsRunning());
 
     return 0;
 }

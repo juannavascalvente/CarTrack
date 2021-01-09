@@ -1,6 +1,9 @@
 /******************************************************************************
                                 Includes
 ******************************************************************************/
+#include <iostream>
+
+using namespace std;
 
 #ifndef CARTRACK_RECEIVERSTATUS_H
 #define CARTRACK_RECEIVERSTATUS_H
@@ -72,6 +75,38 @@ public:
      * @brief   Set value to FAILED
      */
     void setFailed() { status = FAILED; }
+
+    void print() {
+        switch (status)
+        {
+            case IDLE:
+            {
+                cout << "Receiver status: IDLE" << endl;
+                break;
+            }
+            case INIT:
+            {
+                cout << "Receiver status: INIT" << endl;
+                break;
+            }
+            case RUNNING:
+            {
+                cout << "Receiver status: RUNNING" << endl;
+                break;
+            }
+            case FAILED:
+            {
+                cout << "Receiver status: FAILED" << endl;
+                break;
+            }
+            default:
+            {
+                cout << "Receiver status: UNKNOWN" << endl;
+                break;
+            }
+        }
+
+    }
 };
 
 
