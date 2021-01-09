@@ -1,3 +1,0 @@
-/home/juannc/work/CarTrack/code/CarTrack/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/juannc/work/CarTrack/code/CarTrack/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/juannc/work/CarTrack/code/CarTrack/cmake-build-debug/CMakeFiles/CarTrack.dir
