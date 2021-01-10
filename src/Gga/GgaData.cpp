@@ -9,9 +9,15 @@ using namespace std;
 /******************************************************************************
                             Function definitions
 ******************************************************************************/
+void GgaData::setTimeStamp(const string& strUtcIn)
+{
+    strUtc = strUtcIn;
+}
+
 void GgaData::print()
 {
-    cout << "Timestamp:\t" << fTimeStamp << endl;
+    cout << "Timestamp:\t" << strUtc << endl;
+    /*
     //cout << "Latitude:\t" << latitude << endl;              // TODO: implement out
     //cout << "Longitude:\t" << longitude << endl;            // TODO: implement out
     //cout << "Quality:\t" << quality << endl;                // TODO: implement out
@@ -22,4 +28,5 @@ void GgaData::print()
     cout << "Gps age diff:\t" << fAgeDiffGpsRecord << endl;
     cout << "Station ID:\t" << szStationId << endl;
     cout << "Checksum:\t" << szChecksum << endl;
+     */
 }

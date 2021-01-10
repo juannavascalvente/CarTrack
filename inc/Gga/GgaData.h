@@ -2,10 +2,13 @@
                                 Includes
 ******************************************************************************/
 #include <cstddef>
+#include <iostream>
 #include "GgaPosition.h"
 #include "GgaQualityIndicator.h"
 #include "GgaHdop.h"
 #include "GgaAltitude.h"
+
+using namespace std;
 
 #ifndef CARTRACK_GGADATA_H
 #define CARTRACK_GGADATA_H
@@ -14,7 +17,7 @@
                             Class declaration
 ******************************************************************************/
 class GgaData {
-    float fTimeStamp;
+    string strUtc;
     GgaPosition latitude;
     GgaPosition longitude;
     GgaQualityIndicator quality;
@@ -26,8 +29,10 @@ class GgaData {
     size_t szStationId;
     size_t szChecksum;
 public:
-    GgaData() : fTimeStamp(0.0), szNumSatellites(0), fAgeDiffGpsRecord(0.0), szStationId(0), szChecksum(0) {}
+    GgaData() : szNumSatellites(0), fAgeDiffGpsRecord(0.0), szStationId(0), szChecksum(0) {}
     void print();
+
+    void setTimeStamp(const string& strUtcIn);
 };
 
 #endif //CARTRACK_GGADATA_H

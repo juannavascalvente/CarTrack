@@ -14,8 +14,9 @@ using namespace std;
 ******************************************************************************/
 class GgaBuilder
 {
+    static const string commaDelimiter;
 public:
-    static void BuildGga(string strGgaData, GgaData &gga);
+    static void BuildGga(const string& strGgaData, GgaData &gga);
 };
 
 
