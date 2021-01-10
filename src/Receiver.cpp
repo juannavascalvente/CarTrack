@@ -3,6 +3,9 @@
 ******************************************************************************/
 #include <cstring>
 #include <iostream>
+
+#include "GgaBuilder.h"
+#include "GgaData.h"
 #include "Receiver.h"
 
 #ifdef __arm__
@@ -126,6 +129,11 @@ bool Receiver::Process()
             is_GGA_received_completely = false;
         }
 #endif
+        strcpy(buff, "152601.000,1832.9498,N,07347.4051,E,1,6,1.47,606.9,M,-64.6,M,,,*74\n");
+        GgaData ggaData;
+        GgaBuilder::BuildGga(buff, ggaData);
+
+        ggaData.print();
     }
 
     cout << "Receiver Process...end" << endl;
