@@ -37,6 +37,7 @@ public:
     void setLongitude(const GgaPosition& longitudeIn);
     void setQualityIndicator(const string& strQualInd);
     void setNumSatellites(const string& strNumSat);
+    void setHdop(const string& strHdop);
 };
 
 #endif //CARTRACK_GGADATA_H

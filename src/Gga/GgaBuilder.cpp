@@ -45,4 +45,7 @@ void GgaBuilder::BuildGga(const string& strGgaData, GgaData &gga)
 
     // Set Number of satellites.
     gga.setNumSatellites(vTokens.at(6));
+
+    // Set Height of geoid above WGS84 ellipsoid
+    gga.setHdop(vTokens.at(7));
 }
