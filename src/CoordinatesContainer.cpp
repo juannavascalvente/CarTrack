@@ -1,7 +1,10 @@
 /******************************************************************************
                             Includes section
 ******************************************************************************/
+#include <iostream>
 #include "CoordinatesContainer.h"
+
+using namespace std;
 
 
 /******************************************************************************
@@ -9,10 +12,18 @@
 ******************************************************************************/
 void CoordinatesContainer::add(Coordinate &coord)
 {
-    data.push_back(coord);
+    v.push_back(coord);
 }
 
 void CoordinatesContainer::flush()
 {
-    data.clear();
+    v.clear();
+}
+
+void CoordinatesContainer::print()
+{
+    for (auto& item : v)
+    {
+        cout << item << endl;
+    }
 }

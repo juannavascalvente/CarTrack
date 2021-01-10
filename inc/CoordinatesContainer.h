@@ -12,10 +12,33 @@
 ******************************************************************************/
 class CoordinatesContainer
 {
-    vector<Coordinate> data;
+    vector<Coordinate> v;
 public:
+    /**
+     * @fn      add
+     * @brief   Adds a new coordinate
+     * @param   coord   (IN)    Coordinate to add
+     */
     void add(Coordinate &coord);
+
+    /**
+     * @fn      flush
+     * @brief   Flushes container
+     */
     void flush();
+
+    /**
+     * @fn      size
+     * @brief   Gets container number of elements
+     * @return  Container number of elements
+     */
+    size_t size() { return v.size(); }
+
+    /**
+     * @fn      print
+     * @brief   Prints container elements
+     */
+    void print();
 };
 
 

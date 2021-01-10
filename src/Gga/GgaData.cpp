@@ -80,3 +80,11 @@ void GgaData::print()
     cout << "Station ID:\t\t" << strStationId << endl;
     cout << "Checksum:\t\t" << strChecksum << endl;
 }
+
+const GgaPosition &GgaData::getLatitude() const {
+    return latitude;
+}
+
+const GgaPosition &GgaData::getLongitude() const {
+    return longitude;
+}

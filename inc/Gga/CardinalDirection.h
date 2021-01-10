@@ -32,7 +32,15 @@ class CardinalDirection {
     bool isEast(const string& strDirection) { return (strDirection == EAST_STR); }
     bool isWest(const string& strDirection) { return (strDirection == WEST_STR); }
 
-    string getDirection()
+public:
+    CardinalDirection() : direction(NORTH) {};
+
+    bool isNorth() { return (direction == NORTH); }
+    bool isSouth() { return (direction == SOUTH); }
+    bool isEast() { return (direction == EAST); }
+    bool isWest() { return (direction == WEST); }
+
+    string getDirectionAsString()
     {
         if (isNorth())
         {
@@ -55,14 +63,6 @@ class CardinalDirection {
             return "";
         }
     }
-
-public:
-    CardinalDirection() : direction(NORTH) {};
-
-    bool isNorth() { return (direction == NORTH); }
-    bool isSouth() { return (direction == SOUTH); }
-    bool isEast() { return (direction == EAST); }
-    bool isWest() { return (direction == WEST); }
 
     bool setDirection(const string &strDirection) {
         bool isSuccess=true;
@@ -94,7 +94,7 @@ public:
 
     friend ostream& operator<<(ostream& os, CardinalDirection& dir)
     {
-        os << dir.getDirection();
+        os << dir.getDirectionAsString();
         return os;
     }
 };
