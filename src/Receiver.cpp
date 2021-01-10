@@ -31,7 +31,7 @@ char Receiver::GGA_code[GGA_CODE_LEN];
 bool Receiver::isItGgaString;
 unsigned int Receiver::indexGga;
 bool Receiver::is_GGA_received_completely;
-
+CoordinatesContainer Receiver::coordinates;
 
 /******************************************************************************
                             Function definitions
@@ -67,6 +67,8 @@ bool Receiver::Init()
             status.setFailed();
         }
 #endif
+        coordinates.flush();
+
         // Set status as initialized
         status.setInit();
     }
@@ -133,7 +135,7 @@ bool Receiver::Process()
         GgaData ggaData;
         GgaBuilder::BuildGga(buff, ggaData);
 
-        ggaData.print();
+        //coordinates.add();
     }
 
     cout << "Receiver Process...end" << endl;

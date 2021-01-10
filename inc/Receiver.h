@@ -3,6 +3,7 @@
 ******************************************************************************/
 #include <string>
 
+#include "CoordinatesContainer.h"
 #include "ReceiverStatus.h"
 
 using namespace std;
@@ -22,6 +23,8 @@ class Receiver {
     static bool isItGgaString;
     static unsigned int indexGga;
     static bool is_GGA_received_completely;
+
+    static CoordinatesContainer coordinates;
 public:
     static bool Init();
 
