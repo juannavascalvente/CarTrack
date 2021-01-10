@@ -25,10 +25,18 @@ void GgaBuilder::BuildGga(const string& strGgaData, GgaData &gga)
     vector<string> vTokens;
     while ((pos = strOriginalData.find(commaDelimiter)) != std::string::npos) {
         string strToken = strOriginalData.substr(0, pos);
-        std::cout << strToken << std::endl;
         vTokens.push_back((strToken));
         strOriginalData.erase(0, pos + commaDelimiter.length());
     }
 
+    // Set timestamp.
     gga.setTimeStamp(vTokens.at(0));
+
+    // Set latitude and longitude
+    GgaPosition latitude;
+    GgaBuilder::BuildPosition(vTokens.at(1), vTokens.at(2), latitude);
+    gga.setLatitude(latitude);
+    GgaPosition longitude;
+    GgaBuilder::BuildPosition(vTokens.at(3), vTokens.at(4), longitude);
+    gga.setLongitude(longitude);
 }

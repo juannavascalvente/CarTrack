@@ -13,18 +13,18 @@ using namespace std;
                             Class declaration
 ******************************************************************************/
 class GgaPosition {
-    string strPosition;
+    string strPos;
     CardinalDirection direction;
 public:
-    GgaPosition() {};
-    GgaPosition(string &strPosIn, CardinalDirection &directionIn) : strPosition(strPosIn), direction(directionIn) {};
+    GgaPosition() = default;;
+    GgaPosition(string &strPosIn, CardinalDirection &directionIn) : strPos(strPosIn), direction(directionIn) {};
 
     const string &getPosition() const {
-        return strPosition;
+        return strPos;
     }
 
     void setPosition(const string &strPositionIn) {
-        GgaPosition::strPosition = strPositionIn;
+        GgaPosition::strPos = strPositionIn;
     }
 
     const CardinalDirection &getDirection() const {
@@ -37,6 +37,12 @@ public:
 
     void setDirection(const string &strDirection) {
         GgaPosition::direction.setDirection(strDirection);
+    }
+
+    friend ostream& operator<<(ostream& os, GgaPosition &pos)
+    {
+        os << pos.getPosition() << ',' << pos.direction;
+        return os;
     }
 };
 

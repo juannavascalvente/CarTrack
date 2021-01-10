@@ -26,25 +26,60 @@ class CardinalDirection {
     string WEST_STR = "W";
 
     Direction direction;
+
+    bool isNorth(const string& strDirection) { return (strDirection == NORTH_STR); }
+    bool isSouth(const string& strDirection) { return (strDirection == SOUTH_STR); }
+    bool isEast(const string& strDirection) { return (strDirection == EAST_STR); }
+    bool isWest(const string& strDirection) { return (strDirection == WEST_STR); }
+
+    string getDirection()
+    {
+        if (isNorth())
+        {
+            return NORTH_STR;
+        }
+        else if (isSouth())
+        {
+            return SOUTH_STR;
+        }
+        else if (isEast())
+        {
+            return EAST_STR;
+        }
+        else if (isWest())
+        {
+            return WEST_STR;
+        }
+        else
+        {
+            return "";
+        }
+    }
+
 public:
     CardinalDirection() : direction(NORTH) {};
+
+    bool isNorth() { return (direction == NORTH); }
+    bool isSouth() { return (direction == SOUTH); }
+    bool isEast() { return (direction == EAST); }
+    bool isWest() { return (direction == WEST); }
 
     bool setDirection(const string &strDirection) {
         bool isSuccess=true;
 
-        if (strDirection == NORTH_STR)
+        if (isNorth(strDirection))
         {
             direction = NORTH;
         }
-        else if (strDirection == SOUTH_STR)
+        else if (isSouth(strDirection))
         {
             direction = SOUTH;
         }
-        else if (strDirection == EAST_STR)
+        else if (isEast(strDirection))
         {
             direction = EAST;
         }
-        else if (strDirection == WEST_STR)
+        else if (isWest(strDirection))
         {
             direction = WEST;
         }
@@ -55,6 +90,12 @@ public:
         }
 
         return isSuccess;
+    }
+
+    friend ostream& operator<<(ostream& os, CardinalDirection& dir)
+    {
+        os << dir.getDirection();
+        return os;
     }
 };
 
