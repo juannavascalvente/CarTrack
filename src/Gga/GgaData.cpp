@@ -25,6 +25,11 @@ void GgaData::setLongitude(const GgaPosition& longitudeIn)
     longitude = longitudeIn;
 }
 
+void GgaData::setQualityIndicator(const string& strQualInd)
+{
+    quality.set(strQualInd);
+}
+
 void GgaData::setNumSatellites(const string& strNumSat)
 {
     std::stringstream sstream(strNumSat);
@@ -34,11 +39,9 @@ void GgaData::setNumSatellites(const string& strNumSat)
 void GgaData::print()
 {
     cout << "Timestamp:\t\t" << strUtc << endl;
-    cout << "Latitude:\t\t" << latitude << endl;              // TODO: implement out
-    cout << "Longitude:\t\t" << longitude << endl;            // TODO: implement out
-    /*
-    //cout << "Quality:\t	" << quality << endl;                // TODO: implement out
-     */
+    cout << "Latitude:\t\t" << latitude << endl;
+    cout << "Longitude:\t\t" << longitude << endl;
+    cout << "Quality:\t	" << quality << endl;
     cout << "Num sats:\t\t" << szNumSatellites << endl;
     /*
     //cout << "HDOP:\t" << hdop << endl;                      // TODO: implement out

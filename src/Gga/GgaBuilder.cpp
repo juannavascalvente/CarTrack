@@ -40,6 +40,9 @@ void GgaBuilder::BuildGga(const string& strGgaData, GgaData &gga)
     GgaBuilder::BuildPosition(vTokens.at(3), vTokens.at(4), longitude);
     gga.setLongitude(longitude);
 
+    // Set quality indicator
+    gga.setQualityIndicator(vTokens.at(5));
+
     // Set Number of satellites.
     gga.setNumSatellites(vTokens.at(6));
 }

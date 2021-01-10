@@ -35,6 +35,7 @@ public:
     void setTimeStamp(const string& strUtcIn);
     void setLatitude(const GgaPosition& latitudeIn);
     void setLongitude(const GgaPosition& longitudeIn);
+    void setQualityIndicator(const string& strQualInd);
     void setNumSatellites(const string& strNumSat);
 };
 
