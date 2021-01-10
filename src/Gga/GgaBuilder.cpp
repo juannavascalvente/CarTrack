@@ -39,4 +39,7 @@ void GgaBuilder::BuildGga(const string& strGgaData, GgaData &gga)
     GgaPosition longitude;
     GgaBuilder::BuildPosition(vTokens.at(3), vTokens.at(4), longitude);
     gga.setLongitude(longitude);
+
+    // Set Number of satellites.
+    gga.setNumSatellites(vTokens.at(6));
 }

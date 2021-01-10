@@ -2,6 +2,7 @@
                             Includes section
 ******************************************************************************/
 #include <iostream>
+#include <sstream>
 #include "GgaData.h"
 
 using namespace std;
@@ -24,6 +25,11 @@ void GgaData::setLongitude(const GgaPosition& longitudeIn)
     longitude = longitudeIn;
 }
 
+void GgaData::setNumSatellites(const string& strNumSat)
+{
+    std::stringstream sstream(strNumSat);
+    sstream >> szNumSatellites;
+}
 
 void GgaData::print()
 {
