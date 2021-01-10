@@ -33,6 +33,7 @@ public:
     void print();
 
     void setTimeStamp(const string& strUtcIn);
+    void setLatitude(const GgaPosition& latitudeIn);
 };
 
 #endif //CARTRACK_GGADATA_H

@@ -14,6 +14,11 @@ void GgaData::setTimeStamp(const string& strUtcIn)
     strUtc = strUtcIn;
 }
 
+void GgaData::setLatitude(const GgaPosition& latitudeIn)
+{
+    latitude = latitudeIn;
+}
+
 void GgaData::print()
 {
     cout << "Timestamp:\t" << strUtc << endl;

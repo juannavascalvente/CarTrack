@@ -3,6 +3,7 @@
 ******************************************************************************/
 #include <string>
 #include "GgaData.h"
+#include "GgaPosition.h"
 
 using namespace std;
 
@@ -17,6 +18,8 @@ class GgaBuilder
     static const string commaDelimiter;
 public:
     static void BuildGga(const string& strGgaData, GgaData &gga);
+
+    static void BuildPosition(const string &strPosition, const string &strDirection, GgaPosition &position);
 };
 
 
