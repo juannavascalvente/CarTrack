@@ -10,6 +10,7 @@ set(BUILD_PATH .)
 ################################ Source code ##################################
 file(GLOB HEADER_FILES
         ${BUILD_PATH}/inc
+        ${BUILD_PATH}/inc/Gga
         )
 
 file(GLOB SRC_FILES

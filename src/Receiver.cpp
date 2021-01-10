@@ -3,6 +3,8 @@
 ******************************************************************************/
 #include <cstring>
 #include <iostream>
+
+#include "GgaData.h"
 #include "Receiver.h"
 
 #ifdef __arm__
