@@ -33,6 +33,7 @@ void GgaBuilder::BuildGga(const string& strGgaData, GgaData &gga)
         vTokens.push_back((strToken));
         strOriginalData.erase(0, pos + commaDelimiter.length());
     }
+    vTokens.push_back((strOriginalData));
 
     // Set timestamp.
     gga.setTimeStamp(vTokens.at(0));
@@ -54,10 +55,15 @@ void GgaBuilder::BuildGga(const string& strGgaData, GgaData &gga)
     // Set Height of geoid above WGS84 ellipsoid
     gga.setHdop(vTokens.at(7));
 
-    // Set altitude and geodesial
+    // Set altitude and geodesic
     GgaAltitude altitude;
     GgaBuilder::BuildAltitude(vTokens.at(8), vTokens.at(9), altitude);
     gga.setAltitude(altitude);
     GgaBuilder::BuildAltitude(vTokens.at(10), vTokens.at(11), altitude);
     gga.setGeoid(altitude);
+
+    // Set last update, station id and checksum
+    gga.setDiff(vTokens.at(12));
+    gga.setStationId(vTokens.at(13));
+    gga.setChecksum(vTokens.at(14));
 }

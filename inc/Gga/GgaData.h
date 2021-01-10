@@ -25,11 +25,11 @@ class GgaData {
     GgaHdop hdop;
     GgaAltitude altitude;
     GgaAltitude geoid;
-    float fAgeDiffGpsRecord;
-    size_t szStationId;
-    size_t szChecksum;
+    string strAgeDiffGpsRecord;
+    string strStationId;
+    string strChecksum;
 public:
-    GgaData() : szNumSatellites(0), fAgeDiffGpsRecord(0.0), szStationId(0), szChecksum(0) {}
+    GgaData() : szNumSatellites(0) {}
     void print();
 
     void setTimeStamp(const string& strUtcIn);
@@ -40,6 +40,9 @@ public:
     void setHdop(const string& strHdop);
     void setAltitude(const GgaAltitude& val);
     void setGeoid(const GgaAltitude& val);
+    void setDiff(const string& val);
+    void setStationId(const string& val);
+    void setChecksum(const string& val);
 };
 
 #endif //CARTRACK_GGADATA_H

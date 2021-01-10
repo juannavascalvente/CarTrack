@@ -51,6 +51,21 @@ void GgaData::setGeoid(const GgaAltitude& val)
     geoid = val;
 }
 
+void GgaData::setDiff(const string& val)
+{
+    strAgeDiffGpsRecord = val;
+}
+
+void GgaData::setStationId(const string& val)
+{
+    strStationId = val;
+}
+
+void GgaData::setChecksum(const string& val)
+{
+    strChecksum = val;
+}
+
 void GgaData::print()
 {
     cout << "Timestamp:\t\t" << strUtc << endl;
@@ -61,7 +76,7 @@ void GgaData::print()
     cout << "HDOP:\t\t\t" << hdop << endl;
     cout << "Altitude:\t\t" << altitude << endl;
     cout << "Geods:\t\t\t" << geoid << endl;
-    cout << "Gps age diff:\t" << fAgeDiffGpsRecord << endl;
-    cout << "Station ID:\t\t" << szStationId << endl;
-    cout << "Checksum:\t\t" << szChecksum << endl;
+    cout << "Gps age diff:\t" << strAgeDiffGpsRecord << endl;
+    cout << "Station ID:\t\t" << strStationId << endl;
+    cout << "Checksum:\t\t" << strChecksum << endl;
 }
