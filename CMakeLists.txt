@@ -15,6 +15,7 @@ file(GLOB HEADER_FILES
 
 file(GLOB SRC_FILES
         ${BUILD_PATH}/src/*.cpp
+        ${BUILD_PATH}/src/Gga/*.cpp
         )
 
 ################################ Executable ###################################

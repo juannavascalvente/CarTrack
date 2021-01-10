@@ -1,13 +1,21 @@
-//
-// Created by juannc on 10/1/21.
-//
+/******************************************************************************
+                                Includes
+******************************************************************************/
+#include <string>
+#include "GgaData.h"
+
+using namespace std;
 
 #ifndef CARTRACK_GGABUILDER_H
 #define CARTRACK_GGABUILDER_H
 
-
-class GgaBuilder {
-
+/******************************************************************************
+                            Class declaration
+******************************************************************************/
+class GgaBuilder
+{
+public:
+    static void BuildGga(string strGgaData, GgaData &gga);
 };
 
 

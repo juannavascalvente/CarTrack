@@ -4,6 +4,7 @@
 #include <cstring>
 #include <iostream>
 
+#include "GgaBuilder.h"
 #include "GgaData.h"
 #include "Receiver.h"
 
@@ -128,6 +129,10 @@ bool Receiver::Process()
             is_GGA_received_completely = false;
         }
 #endif
+        GgaData ggaData;
+        GgaBuilder::BuildGga(buff, ggaData);
+
+        ggaData.print();
     }
 
     cout << "Receiver Process...end" << endl;

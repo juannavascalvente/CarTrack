@@ -1,11 +1,11 @@
 /******************************************************************************
                                 Includes
 ******************************************************************************/
+#include <cstddef>
 #include "GgaPosition.h"
 #include "GgaQualityIndicator.h"
 #include "GgaHdop.h"
 #include "GgaAltitude.h"
-
 
 #ifndef CARTRACK_GGADATA_H
 #define CARTRACK_GGADATA_H
@@ -26,6 +26,8 @@ class GgaData {
     size_t szStationId;
     size_t szChecksum;
 public:
+    GgaData() : fTimeStamp(0.0), szNumSatellites(0), fAgeDiffGpsRecord(0.0), szStationId(0), szChecksum(0) {}
+    void print();
 };
 
 #endif //CARTRACK_GGADATA_H
