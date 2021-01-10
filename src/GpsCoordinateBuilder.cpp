@@ -7,15 +7,18 @@
 /******************************************************************************
                             Function definitions
 ******************************************************************************/
-void GpsCoordinateBuilder::fromGPGGAtoGPS(const std::string& strLat, const std::string& strLong, GpsCoordinates &coord)
+void GpsCoordinateBuilder::fromGPGGAtoGPS(const GgaData& ggaData, Coordinate &coord)
 {
     // Get latitude and longitude
-    string strDDLat = GGAtoDecimalDegrees(strLat, uiZero, uiTwo);
-    string strDDLon = GGAtoDecimalDegrees(strLong, uiZero, uiThree);
+    string strDecDegreeLat = GGAtoDecimalDegrees(ggaData.getLatitude().getPosition(), uiZero, uiTwo);
+    string strDecDegreeLon = GGAtoDecimalDegrees(ggaData.getLongitude().getPosition(), uiZero, uiThree);
 
     // Update coordinate
-    coord.setLat(strDDLat);
-    coord.setLon(strDDLon);
+    CardinalDirection latDirection = ggaData.getLatitude().getDirection();
+    CardinalDirection lonDirection = ggaData.getLongitude().getDirection();
+    string strLat = strDecDegreeLat + latDirection.getDirectionAsString();
+    string strLon = strDecDegreeLon + lonDirection.getDirectionAsString();
+    coord.set(strLat, strLon);
 }
 
 string GpsCoordinateBuilder::GGAtoDecimalDegrees(const string& strVal, uint uiFirstIdx, uint uiSecondIdx)

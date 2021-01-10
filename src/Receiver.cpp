@@ -6,6 +6,7 @@
 
 #include "GgaBuilder.h"
 #include "GgaData.h"
+#include "GpsCoordinateBuilder.h"
 #include "Receiver.h"
 
 #ifdef __arm__
@@ -31,7 +32,7 @@ char Receiver::GGA_code[GGA_CODE_LEN];
 bool Receiver::isItGgaString;
 unsigned int Receiver::indexGga;
 bool Receiver::is_GGA_received_completely;
-
+CoordinatesContainer Receiver::coordinates;
 
 /******************************************************************************
                             Function definitions
@@ -67,6 +68,8 @@ bool Receiver::Init()
             status.setFailed();
         }
 #endif
+        coordinates.flush();
+
         // Set status as initialized
         status.setInit();
     }
@@ -129,11 +132,19 @@ bool Receiver::Process()
             is_GGA_received_completely = false;
         }
 #endif
-        strcpy(buff, "152601.000,1832.9498,N,07347.4051,E,1,6,1.47,606.9,M,-64.6,M,,,*74\n");
+        strcpy(buff, "152601.000,1832.9498,N,07347.4051,E,1,6,1.47,606.9,M,-64.6,M,,,*74");
         GgaData ggaData;
         GgaBuilder::BuildGga(buff, ggaData);
 
-        ggaData.print();
+        Coordinate coord;
+        GpsCoordinateBuilder::fromGPGGAtoGPS(ggaData, coord);
+        coordinates.add(coord);
+
+        if (coordinates.size() == 10)
+        {
+            coordinates.print();
+            coordinates.flush();
+        }
     }
 
     cout << "Receiver Process...end" << endl;

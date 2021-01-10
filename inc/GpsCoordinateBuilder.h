@@ -2,7 +2,8 @@
                                 Includes
 ******************************************************************************/
 #include <string>
-#include "GpsCoordinates.h"
+#include "Coordinate.h"
+#include "GgaData.h"
 
 #ifndef CARTRACK_GPSCOORDINATEBUILDER_H
 #define CARTRACK_GPSCOORDINATEBUILDER_H
@@ -21,7 +22,7 @@ class GpsCoordinateBuilder {
     static string GGAtoDecimalDegrees(const string& strVal, uint uiFirstIdx, uint uiSecondIdx);
 
 public:
-    static void fromGPGGAtoGPS(const std::string& strLat, const std::string& strLong, GpsCoordinates &coord);
+    static void fromGPGGAtoGPS(const GgaData& ggaData, Coordinate &coord);
 };
 
 #endif //CARTRACK_GPSCOORDINATEBUILDER_H

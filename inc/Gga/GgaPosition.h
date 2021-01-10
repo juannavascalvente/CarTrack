@@ -16,7 +16,7 @@ class GgaPosition {
     string strPos;
     CardinalDirection direction;
 public:
-    GgaPosition() = default;;
+    GgaPosition() = default;
     GgaPosition(string &strPosIn, CardinalDirection &directionIn) : strPos(strPosIn), direction(directionIn) {};
 
     const string &getPosition() const {

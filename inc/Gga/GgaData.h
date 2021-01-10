@@ -25,6 +25,12 @@ class GgaData {
     GgaHdop hdop;
     GgaAltitude altitude;
     GgaAltitude geoid;
+public:
+    const GgaPosition &getLatitude() const;
+
+    const GgaPosition &getLongitude() const;
+
+private:
     string strAgeDiffGpsRecord;
     string strStationId;
     string strChecksum;
