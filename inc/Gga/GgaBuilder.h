@@ -20,6 +20,8 @@ public:
     static void BuildGga(const string& strGgaData, GgaData &gga);
 
     static void BuildPosition(const string &strPosition, const string &strDirection, GgaPosition &position);
+
+    static void BuildAltitude(const string &strAltitude, const string &strUnit, GgaAltitude &altitude);
 };
 
 

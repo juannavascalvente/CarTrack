@@ -38,6 +38,8 @@ public:
     void setQualityIndicator(const string& strQualInd);
     void setNumSatellites(const string& strNumSat);
     void setHdop(const string& strHdop);
+    void setAltitude(const GgaAltitude& val);
+    void setGeoid(const GgaAltitude& val);
 };
 
 #endif //CARTRACK_GGADATA_H

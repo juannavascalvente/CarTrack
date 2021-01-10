@@ -41,6 +41,16 @@ void GgaData::setHdop(const string& strHdop)
     hdop.set(strHdop);
 }
 
+void GgaData::setAltitude(const GgaAltitude& val)
+{
+    altitude = val;
+}
+
+void GgaData::setGeoid(const GgaAltitude& val)
+{
+    geoid = val;
+}
+
 void GgaData::print()
 {
     cout << "Timestamp:\t\t" << strUtc << endl;
@@ -49,8 +59,8 @@ void GgaData::print()
     cout << "Quality:\t	" << quality << endl;
     cout << "Num sats:\t\t" << szNumSatellites << endl;
     cout << "HDOP:\t\t\t" << hdop << endl;
-    //cout << "Altitude:\t" << altitude << endl;              // TODO: implement out
-    //cout << "Geods:\t" << geoid << endl;                    // TODO: implement out
+    cout << "Altitude:\t\t" << altitude << endl;
+    cout << "Geods:\t\t\t" << geoid << endl;
     cout << "Gps age diff:\t" << fAgeDiffGpsRecord << endl;
     cout << "Station ID:\t\t" << szStationId << endl;
     cout << "Checksum:\t\t" << szChecksum << endl;

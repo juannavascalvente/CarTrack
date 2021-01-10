@@ -16,6 +16,11 @@ void GgaBuilder::BuildPosition(const string &strPosition, const string &strDirec
     position.setDirection(strDirection);
 }
 
+void GgaBuilder::BuildAltitude(const string &strAltitude, const string &strUnit, GgaAltitude &altitude)
+{
+    altitude.set(strAltitude, strUnit);
+}
+
 void GgaBuilder::BuildGga(const string& strGgaData, GgaData &gga)
 {
     printf("GGA: %s\n",strGgaData.c_str());
@@ -48,4 +53,11 @@ void GgaBuilder::BuildGga(const string& strGgaData, GgaData &gga)
 
     // Set Height of geoid above WGS84 ellipsoid
     gga.setHdop(vTokens.at(7));
+
+    // Set altitude and geodesial
+    GgaAltitude altitude;
+    GgaBuilder::BuildAltitude(vTokens.at(8), vTokens.at(9), altitude);
+    gga.setAltitude(altitude);
+    GgaBuilder::BuildAltitude(vTokens.at(10), vTokens.at(11), altitude);
+    gga.setGeoid(altitude);
 }
