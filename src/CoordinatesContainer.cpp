@@ -30,7 +30,7 @@ void CoordinatesContainer::print()
     }
 }
 
-void CoordinatesContainer::write(ofstream ofs)
+void CoordinatesContainer::write(ofstream &ofs)
 {
     for (auto& item : v)
     {

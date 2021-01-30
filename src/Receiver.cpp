@@ -149,11 +149,8 @@ bool Receiver::Save()
     fd.open(strFileName, ios::out | ios::app);
     if (fd.is_open())
     {
-        std::cout << "SAVING" << std::endl;
-        //coordinates.write(fd);
+        coordinates.write(fd);
         coordinates.print();
-        fd << "Writing this to a file.\n";
-        std::cout << "SAVED" << std::endl;
         fd.close();
     }
     else

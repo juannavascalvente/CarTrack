@@ -44,7 +44,7 @@ public:
      * @fn      write
      * @brief   Writes container elements to output file stream
      */
-    void write(ofstream ofs);
+    void write(ofstream &ofs);
 };
 
 
