@@ -3,6 +3,7 @@
 ******************************************************************************/
 #include <cstring>
 #include <iostream>
+#include <unistd.h>
 
 #include "GgaBuilder.h"
 #include "GgaData.h"
@@ -31,7 +32,7 @@ char Receiver::buff[BUFF_LEN];
 char Receiver::GGA_code[GGA_CODE_LEN];
 bool Receiver::isItGgaString;
 unsigned int Receiver::indexGga;
-bool Receiver::is_GGA_received_completely;
+bool Receiver::isGgaReceivedCompletely;
 CoordinatesContainer Receiver::coordinates;
 
 /******************************************************************************
@@ -47,7 +48,7 @@ bool Receiver::Init()
     memset(GGA_code, 0, sizeof(GGA_code));
     isItGgaString = false;
     indexGga=0;
-    is_GGA_received_completely = false;
+    setDataReceived(false);
 
     // Check receiver is in IDLE status.
     if (status.isIdle())
@@ -92,62 +93,74 @@ bool Receiver::Process()
 
     while (Receiver::IsRunning())
     {
-#ifdef __arm__
-        // Check for any data available on serial port
-        if (serialDataAvail(serial_port) )
-        {
-            // Receive character serially
-            dat = serialGetchar(serial_port);
-            printf("%c ", dat);
-            if (dat == '$')
-            {
-                isItGgaString = false;
-                indexGga = 0;
-            }
-            else if (isItGgaString)
-            {
-                buff[indexGga++] = dat;
-                if(dat=='\r')
-                {
-                    is_GGA_received_completely = true;
-                }
-            }
-            else if ((GGA_code[0] =='G') && (GGA_code[1] =='G') && (GGA_code[2] =='A'))
-            {
-                isItGgaString = true;
-                GGA_code[0]= 0;
-                GGA_code[0]= 0;
-                GGA_code[0]= 0;
-            }
-            else
-                {
-                GGA_code[0] = GGA_code[1];
-                GGA_code[1] = GGA_code[2];
-                GGA_code[2] = dat;
-            }
-        }
-        if (is_GGA_received_completely)
+        // Read data from GPS
+        Receiver::ReadData();
+
+        // Check data received
+        if (isDataReceived())
         {
             printf("GGA: %s",buff);
-            is_GGA_received_completely = false;
-        }
-#endif
-        strcpy(buff, "152601.000,1832.9498,N,07347.4051,E,1,6,1.47,606.9,M,-64.6,M,,,*74");
-        GgaData ggaData;
-        GgaBuilder::BuildGga(buff, ggaData);
 
-        Coordinate coord;
-        GpsCoordinateBuilder::fromGPGGAtoGPS(ggaData, coord);
-        coordinates.add(coord);
+            // Convert raw data to gps coordinates
+            GgaData ggaData;
+            GgaBuilder::BuildGga(buff, ggaData);
 
-        if (coordinates.size() == 10)
-        {
-            coordinates.print();
-            coordinates.flush();
+            Coordinate coord;
+            GpsCoordinateBuilder::fromGPGGAtoGPS(ggaData, coord);
+            coordinates.add(coord);
+
+            if (coordinates.size() == 10)
+            {
+                coordinates.print();
+                coordinates.flush();
+            }
         }
     }
 
     cout << "Receiver Process...end" << endl;
 
     return Receiver::IsRunning();
+}
+
+void Receiver::ReadData()
+{
+#ifdef __arm__
+    // Check for any data available on serial port
+    if (serialDataAvail(serial_port) )
+    {
+        // Receive character serially
+        dat = serialGetchar(serial_port);
+        printf("%c ", dat);
+        if (dat == '$')
+        {
+            isItGgaString = false;
+            indexGga = 0;
+        }
+        else if (isItGgaString)
+        {
+            buff[indexGga++] = dat;
+            if(dat=='\r')
+            {
+                setDataReceived(true);
+            }
+        }
+        else if ((GGA_code[0] =='G') && (GGA_code[1] =='G') && (GGA_code[2] =='A'))
+        {
+            isItGgaString = true;
+            GGA_code[0]= 0;
+            GGA_code[0]= 0;
+            GGA_code[0]= 0;
+        }
+        else
+        {
+            GGA_code[0] = GGA_code[1];
+            GGA_code[1] = GGA_code[2];
+            GGA_code[2] = dat;
+        }
+    }
+#else
+    sleep(1);
+    strcpy(buff, "152601.000,1832.9498,N,07347.4051,E,1,6,1.47,606.9,M,-64.6,M,,,*74");
+    setDataReceived(true);
+#endif
 }
