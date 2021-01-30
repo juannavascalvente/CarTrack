@@ -4,6 +4,7 @@
 #include <cstring>
 #include <iostream>
 #include <unistd.h>
+#include <fstream>
 
 #include "GgaBuilder.h"
 #include "GgaData.h"
@@ -15,25 +16,6 @@
 #include <wiringSerial.h>
 #endif
 
-/******************************************************************************
-                                    Defines
-******************************************************************************/
-#define BUFF_LEN            100
-#define GGA_CODE_LEN        3
-
-
-/******************************************************************************
-                            Members definitions
-******************************************************************************/
-ReceiverStatus Receiver::status;
-int Receiver::serial_port;
-char Receiver::dat;
-char Receiver::buff[BUFF_LEN];
-char Receiver::GGA_code[GGA_CODE_LEN];
-bool Receiver::isItGgaString;
-unsigned int Receiver::indexGga;
-bool Receiver::isGgaReceivedCompletely;
-CoordinatesContainer Receiver::coordinates;
 
 /******************************************************************************
                             Function definitions
@@ -41,14 +23,6 @@ CoordinatesContainer Receiver::coordinates;
 bool Receiver::Init()
 {
     cout << "Receiver Init..." << endl;
-
-    serial_port = 0;
-    dat = 0;
-    memset(buff, 0, sizeof(buff));
-    memset(GGA_code, 0, sizeof(GGA_code));
-    isItGgaString = false;
-    indexGga=0;
-    setDataReceived(false);
 
     // Check receiver is in IDLE status.
     if (status.isIdle())
@@ -94,7 +68,7 @@ bool Receiver::Process()
     while (Receiver::IsRunning())
     {
         // Read data from GPS
-        Receiver::ReadData();
+        Receiver::Read();
 
         // Check data received
         if (isDataReceived())
@@ -109,9 +83,11 @@ bool Receiver::Process()
             GpsCoordinateBuilder::fromGPGGAtoGPS(ggaData, coord);
             coordinates.add(coord);
 
-            if (coordinates.size() == 10)
+            // Check if coordinates must be saved
+            if (isTimeToSave())
             {
-                coordinates.print();
+                // Save coordinates and flush buffer
+                Save();
                 coordinates.flush();
             }
         }
@@ -122,7 +98,7 @@ bool Receiver::Process()
     return Receiver::IsRunning();
 }
 
-void Receiver::ReadData()
+void Receiver::Read()
 {
 #ifdef __arm__
     // Check for any data available on serial port
@@ -163,4 +139,33 @@ void Receiver::ReadData()
     strcpy(buff, "152601.000,1832.9498,N,07347.4051,E,1,6,1.47,606.9,M,-64.6,M,,,*74");
     setDataReceived(true);
 #endif
+}
+
+bool Receiver::Save()
+{
+    bool isSaved=true;
+
+    ofstream fd;
+    fd.open(strFileName, ios::out | ios::app);
+    if (fd.is_open())
+    {
+        std::cout << "SAVING" << std::endl;
+        //coordinates.write(fd);
+        coordinates.print();
+        fd << "Writing this to a file.\n";
+        std::cout << "SAVED" << std::endl;
+        fd.close();
+    }
+    else
+    {
+        isSaved = false;
+        std::cout << "Error opening file: " << strFileName << std::endl;
+    }
+
+    return isSaved;
+}
+
+bool Receiver::isTimeToSave()
+{
+    return (coordinates.size() % 2 == 0);
 }

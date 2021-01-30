@@ -12,25 +12,38 @@ using namespace std;
 #define CARTRACK_RECEIVER_H
 
 /******************************************************************************
+                                    Defines
+******************************************************************************/
+#define BUFF_LEN            100
+#define GGA_CODE_LEN        3
+#define OUT_FILE_NAME       "coordinates.txt"
+
+
+/******************************************************************************
                             Class declaration
 ******************************************************************************/
 class Receiver {
 
-    static ReceiverStatus status;
+    ReceiverStatus status;
 
-    static int serial_port;
-    static char dat,buff[100],GGA_code[3];
-    static bool isItGgaString;
-    static unsigned int indexGga;
-    static bool isGgaReceivedCompletely;
+    int serial_port;
+    char dat,buff[BUFF_LEN],GGA_code[GGA_CODE_LEN];
+    bool isItGgaString;
+    unsigned int indexGga;
+    bool isGgaReceivedCompletely;
+    string strFileName;
 
-    static CoordinatesContainer coordinates;
+    CoordinatesContainer coordinates;
 
     /**
-     * @fn:         ReadData
+     * @fn:         Read
      * @brief       Reads GPS coordinate from GPS device
      */
-    static void ReadData();
+    void Read();
+
+    bool isTimeToSave();
+
+    bool Save();
 
     /**
      * @fn:         isDataReceived
@@ -38,22 +51,26 @@ class Receiver {
      * @return      true if a GPS coordinate has been received
      *              false otherwise
      */
-    static bool isDataReceived() {return isGgaReceivedCompletely; };
+    bool isDataReceived() const {return isGgaReceivedCompletely; };
 
     /**
      * @fn:         setDataReceived
      * @brief       Sets  isGgaReceivedCompletely value to input value
      * @param value (IN) Value to set
      */
-    static void setDataReceived(bool value) { isGgaReceivedCompletely = value; };
+    void setDataReceived(bool value) { isGgaReceivedCompletely = value; };
 public:
+
+    Receiver() : serial_port(0), dat(0), buff(""), GGA_code(""), isItGgaString(false), indexGga(0),
+                 isGgaReceivedCompletely(false), strFileName(OUT_FILE_NAME) {};
+
     /**
      * @fn:         Init
      * @brief       Initializes receiver resources
      * @return      true if initialized
      *              false otherwise
      */
-    static bool Init();
+    bool Init();
 
     /**
      * @fn:         Process
@@ -61,7 +78,7 @@ public:
      * @return      true if process finished while running
      *              false otherwise
      */
-    static bool Process();
+    bool Process();
 
     /**
      * @fn:         IsRunning
@@ -69,7 +86,7 @@ public:
      * @return      true if receiver is in RUNNING process
      *              false otherwise
      */
-    static bool IsRunning();
+    bool IsRunning();
 };
 
 #endif //CARTRACK_RECEIVER_H

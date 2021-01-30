@@ -39,6 +39,12 @@ public:
      * @brief   Prints container elements
      */
     void print();
+
+    /**
+     * @fn      write
+     * @brief   Writes container elements to output file stream
+     */
+    void write(ofstream ofs);
 };
 
 
